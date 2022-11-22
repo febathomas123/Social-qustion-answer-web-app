@@ -1,0 +1,797 @@
+<!--{% load static %}-->
+<!--<html>-->
+<!--<head>-->
+<!--<link rel="stylesheet" href="{% static 'css/stylee.css'%}"/>-->
+<!--<link href="{% static 'css/style.css'%}" type="text/css" rel="stylesheet">-->
+<!--<link rel="stylesheet" href="{% static 'css/sec.css'%}"/>-->
+<!--</head>-->
+<!--<body>-->
+<!--  <div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.596),rgba(0, 0, 0, 0.568)) ,url('{% static 'images/background.jpg'%}');">-->
+<!--<div class="navbar">-->
+<!--<img src="{% static 'images/logo.jpg'%}" class="logo" width="800" height="50">-->
+<!--{{email}}-->
+<!--</div>-->
+
+
+
+<!--<h1> Search here</h1>-->
+
+<!--<form method="POST" autocomplete="on">-->
+<!--		  {% csrf_token %}-->
+<!--  <label>Search question:</label>-->
+<!--  <input type="search" id="gsearch" name="gsearch">-->
+<!--  <input type="submit">-->
+<!--    <a href="/logout/">logout</a>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--  &lt;!&ndash;Body of Form ends-&ndash;&gt;-->
+<!--  </body>-->
+<!--</html>-->
+
+{% load static %}
+
+<style>
+
+/* * {
+  padding: 0;
+  margin: 0;
+  color: #1a1f36;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
+}
+body {
+    min-height: 100%;
+    background-color: #ffffff;
+} */
+h1 {
+    letter-spacing: -1px;
+}
+a {
+  color: #5469d4;
+  text-decoration: unset;
+}
+.login-root {
+    background: #fff;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.loginbackground {
+    min-height: 692px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+.flex-flex {
+    display: flex;
+}
+.align-center {
+  align-items: center;
+}
+.center-center {
+  align-items: center;
+  justify-content: center;
+}
+.box-root {
+    box-sizing: border-box;
+}
+.flex-direction--column {
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.loginbackground-gridContainer {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: [start] 1fr [left-gutter] (86.6px)[16] [left-gutter] 1fr [end];
+    grid-template-columns: [start] 1fr [left-gutter] repeat(16,86.6px) [left-gutter] 1fr [end];
+    -ms-grid-rows: [top] 1fr [top-gutter] (64px)[8] [bottom-gutter] 1fr [bottom];
+    grid-template-rows: [top] 1fr [top-gutter] repeat(8,64px) [bottom-gutter] 1fr [bottom];
+    justify-content: center;
+    margin: 0 -2%;
+    transform: rotate(-12deg) skew(-12deg);
+}
+.box-divider--light-all-2 {
+    box-shadow: inset 0 0 0 2px #e3e8ee;
+}
+.box-background--blue {
+    background-color: #5469d4;
+}
+.box-background--white {
+  background-color: #ffffff;
+}
+.box-background--blue800 {
+    background-color: #212d63;
+}
+.box-background--gray100 {
+    background-color: #e3e8ee;
+}
+.box-background--cyan200 {
+    background-color: #7fd3ed;
+}
+.padding-top--64 {
+  padding-top: 64px;
+}
+.padding-top--24 {
+  padding-top: 24px;
+}
+.padding-top--48 {
+  padding-top: 48px;
+}
+.padding-bottom--24 {
+  padding-bottom: 24px;
+}
+.padding-horizontal--48 {
+  padding: 48px;
+}
+.padding-bottom--15 {
+  padding-bottom: 15px;
+}
+
+
+.flex-justifyContent--center {
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.formbg {
+    margin: 0px auto;
+    width: 100%;
+    max-width: 448px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+span1{
+    display: block;
+    font-size: 20px;
+    line-height: 28px;
+    color: #1a1f36;
+}
+label {
+    margin-bottom: 10px;
+}
+.reset-pass a,label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+}
+.reset-pass > a {
+    text-align: right;
+    margin-bottom: 10px;
+}
+.grid--50-50 {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+}
+
+.field input {
+    font-size: 16px;
+    line-height: 28px;
+    padding: 8px 16px;
+    width: 100%;
+    min-height: 44px;
+    border: unset;
+    border-radius: 4px;
+    outline-color: rgb(84 105 212 / 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+
+input[type="submit"] {
+    background-color: rgb(84, 105, 212);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
+                rgb(84, 105, 212) 0px 0px 0px 1px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+                rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+.field-checkbox input {
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+    box-shadow: unset;
+    min-height: unset;
+}
+.field-checkbox label {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+a.ssolink {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+}
+.footer-link span {
+    font-size: 14px;
+    text-align: center;
+}
+.listing a {
+    color: #697386;
+    font-weight: 600;
+    margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#nav{
+list-style:none inside;
+margin:0;
+padding:0;
+text-align:center;
+}
+#nav li {
+display:block;
+position:relative;
+float:left;
+background: #24af15; /* menu background color */
+}
+#nav li a {
+display:block;
+
+padding:0;
+text-decoration:none;
+width:300px; /* this is the width of the menu items */
+line-height:45px; /* this is the hieght of the menu items */
+color:#ffffff; /* list item font color */
+}
+#nav li li a {font-size:80%;} /* smaller font size for sub menu items */
+#nav li:hover {background:#003f20;} /* highlights current hovered list item and the parent list items when hovering over sub menues */
+#nav ul {
+position:absolute;
+padding:0;
+left:0;
+
+display:none; /* hides sublists */
+}
+#nav li:hover ul ul {display:none;} /* hides sub-sublists */
+#nav li:hover ul {display:block;} /* shows sublist on hover */
+#nav li li:hover ul {
+display:block; /* shows sub-sublist on hover */
+margin-left:300px; /* this should be the same width as the parent list item */
+margin-top:-55px; /* aligns top of sub menu with top of list item */
+}
+</style>
+
+
+
+
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Stackfindover: Sign in</title>
+ <!-- <link rel="stylesheet" href="{% static 'css/stye.css'%}"/> -->
+</head>
+<meta charset="UTF-8" />
+  <title>Attendance Dashboard | By Code Info</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome Cdn Link -->
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>-->
+</head>
+<body>
+
+<!--  <div class="container">-->
+<!--    <nav>-->
+<!--      <ul>-->
+<!--        <li><a href="#" class="logo">-->
+<!--          <img src="C:\SWA\pro.jpg">-->
+<!--          <span class="nav-item">User</span>-->
+<!--        </a></li>-->
+<!--        <li><a href="#">-->
+<!--          <i class="fas fa-menorah"></i>-->
+<!--          <span class="nav-item">Dashboard</span>-->
+<!--        </a></li>-->
+<!--        <li><a href="#">-->
+<!--          <i class="fas fa-comment"></i>-->
+<!--          <span class="nav-item">Message</span>-->
+<!--        </a></li>-->
+<!--        <li><a href="#">-->
+<!--          <i class="fas fa-database"></i>-->
+<!--          <span class="nav-item">Report</span>-->
+<!--        </a></li>-->
+
+<!--        <li><a href="#">-->
+<!--          <i class="fas fa-cog"></i>-->
+<!--          <span class="nav-item">Setting</span>-->
+<!--        </a></li>-->
+
+<!--        <li><a href="#" class="logout">-->
+<!--          <i class="fas fa-sign-out-alt"></i>-->
+<!--          <span class="nav-item">Log out</span>-->
+<!--        </a></li>-->
+<!--      </ul>-->
+<!--    </nav>-->
+
+
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="{% static 'assets/img/icons/icon-48x48.png'%}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+	<title>QAworld</title>
+
+	<link href="{% static 'assets/css/app.css'%}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="/user/">
+          <span class="align-middle">QAworld</span>
+        </a>
+
+		<ul class="sidebar-nav">
+      <li class="sidebar-header">
+        Pages
+      </li>
+
+
+		<li class="sidebar-item ">
+			<a class="sidebar-link" href="/user/">
+  <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+</a>
+		</li>
+
+		<li class="sidebar-item ">
+			<a class="sidebar-link" href="/public_eprofile/">
+  <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+</a>
+		</li>
+
+		<li class="sidebar-item active">
+			<a class="sidebar-link" href="/answer/">
+  <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">View question</span>
+</a>
+		</li>
+
+
+		<li class="sidebar-item">
+			<a class="sidebar-link" href="/logout/">
+  <i class="align-middle" data-feather="square"></i> <span class="align-middle">loguut</span>
+</a>
+		</li>
+
+
+
+			</div>
+		</nav>
+
+		<div class="main" style="align:right ;">
+			<nav class="navbar navbar-expand navbar-light navbar-bg" >
+				<a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+
+
+		<li class="sidebar-item">
+			<a  href="/public_eprofile/">
+  <i class="align-middle" data-feather="square"></i> <span class="align-middle">{{r_det.f_name}}</span>
+</a>
+		</li>
+			</nav>
+
+
+
+<!--      <div class="login-root">-->
+<!--        <div class="box-root padding-top&#45;&#45;24 flex-flex flex-direction&#45;&#45;column" style="flex-grow: 1; z-index: 9;">-->
+<!--         <div class="box-root padding-top&#45;&#45;48 padding-bottom&#45;&#45;24 flex-flex flex-justifyContent&#45;&#45;center">-->
+<!--           <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Lets Start...!!!</a></h1>-->
+<!--         </div>-->
+
+<!--         <div class="formbg-outer">-->
+<!--           <div class="formbg">-->
+<!--             <div class="formbg-inner padding-horizontal&#45;&#45;48">-->
+<!--               <form id="stripe-login" action="" method="POST" >  {% csrf_token %}-->
+<!--                 <div class="field padding-bottom&#45;&#45;24">-->
+<!--                        <div>-->
+<!--                            <center>-->
+<!--                              <div class="box">-->
+<!--           <label for="category" class="fl fontLabel"> Category  </label>-->
+<!--           <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>-->
+<!--           <div class="fr">-->
+<!--                     <select name="category1"   style="cdwidth:190px;" required id="d" >-->
+<!--           <option selected value="null"><small>select category</small></option>-->
+<!--           {% for a in c_det %}-->
+<!--           <option value='{{a.cat}}'><small><font color="black">{{a.cat}}</font> </small>-->
+
+<!--           {% endfor %}-->
+<!-- &lt;!&ndash;    					<input type="text" required name="category" id="c" placeholder="Category Id" class="textBox">&ndash;&gt;-->
+<!--           </select></div>-->
+<!--           <div class="clr"></div>-->
+<!--       </div><br></center>-->
+<!--         &lt;!&ndash;category ID-&#45;&#45;&ndash;&gt;-->
+<!-- &lt;!&ndash;                    <label for="category">Category</label>&ndash;&gt;-->
+<!-- &lt;!&ndash;&lt;!&ndash;                   <input type="text" name="categorry" id="d" >&ndash;&gt;&ndash;&gt;-->
+<!-- &lt;!&ndash;&lt;!&ndash;                           <label for="cars">Choose a car:</label>&ndash;&gt;&ndash;&gt;-->
+
+<!-- &lt;!&ndash;<select name="CAT" id="d">&ndash;&gt;-->
+<!-- &lt;!&ndash;  <option value="volvo">SCIENCE</option>&ndash;&gt;-->
+<!-- &lt;!&ndash;  <option value="saab">MATHS</option>&ndash;&gt;-->
+<!-- &lt;!&ndash;  <option value="mercedes">PHYSICS</option>&ndash;&gt;-->
+<!-- &lt;!&ndash;  <option value="audi">OTHERS</option>&ndash;&gt;-->
+<!-- &lt;!&ndash;</select></div><br>&ndash;&gt;-->
+<!--                     <div><center>-->
+<!--                           <label for="Question">Question</label>-->
+
+<!-- &lt;!&ndash;                  <input type="textarea" name="question">&ndash;&gt;-->
+
+<!--                     <textarea id="a" required name="questions"  required rows="4" cols="50">-->
+<!--                     </textarea>-->
+<!--                     </div></center>-->
+<!--                 <div>-->
+<!--                     <center>-->
+<!--                     <label for="Duration">End Date</label>-->
+<!--                    <input type="date"   required name="duration" id="b" ></center>-->
+<!--                        <div><center>-->
+<!--                     <label for="Amount">Amount</label>-->
+<!--                    <input type="text" required name="amount" id="c" ></div><br></center>-->
+<!--                          <div class="box" style="background: #2d3e3f">-->
+<!--             <input type="Submit" name="Submit" class="submit" value="SUBMIT">-->
+<!--         </div>-->
+
+
+
+
+<!--                 </div>-->
+
+<!--             </div>-->
+<!--           </div>-->
+<!--         </div>-->
+<!--       </div>-->
+<!--     </div>-->
+<!--   </div>-->
+<!--   </div>-->
+
+
+<div class="table-users">
+   <div class="header">Users</div>
+
+   <table cellspacing="0">
+      <tr>
+         <th>Picture</th>
+         <th>Name</th>
+         <th>Email</th>
+         <th>Phone</th>
+         <th width="230">Comments</th>
+      </tr>
+
+      <tr>
+         <td><img src="https://i.picsum.photos/id/1005/100/100.jpg" alt="" /></td>
+         <td>Jane Doe</td>
+         <td>jane.doe@foo.com</td>
+         <td>01 800 2000</td>
+         <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </td>
+      </tr>
+
+      <tr>
+         <td><img src="https://i.picsum.photos/id/1027/100/100.jpg" alt="" /></td>
+         <td>John Doe</td>
+         <td>john.doe@foo.com</td>
+         <td>01 800 2000</td>
+         <td>Blanditiis, aliquid numquam iure voluptatibus ut maiores explicabo ducimus neque, nesciunt rerum perferendis, inventore.</td>
+      </tr>
+
+      <tr>
+         <td><img src="https://i.picsum.photos/id/64/100/100.jpg" alt="" /></td>
+         <td>Jane Smith</td>
+         <td>jane.smith@foo.com</td>
+         <td>01 800 2000</td>
+         <td> Culpa praesentium unde pariatur fugit eos recusandae voluptas.</td>
+      </tr>
+
+      <tr>
+         <td><img src="https://i.picsum.photos/id/1025/100/100.jpg" alt="" /></td>
+         <td>John Smith</td>
+         <td>john.smith@foo.com</td>
+         <td>01 800 2000</td>
+         <td>Aut voluptatum accusantium, eveniet, sapiente quaerat adipisci consequatur maxime temporibus quas, dolorem impedit.</td>
+      </tr>
+   </table>
+</div>
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>EXPERT</strong></a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+<!--									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>-->
+<!--								</li>-->
+<!--								<li class="list-inline-item">-->
+<!--									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>-->
+<!--								</li>-->
+<!--								<li class="list-inline-item">-->
+<!--									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>-->
+<!--								</li>-->
+<!--								<li class="list-inline-item">-->
+<!--									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>-->
+<!--								</li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+	<script src="{% static 'assets/js/app.js'%}"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+			// Line chart
+			new Chart(document.getElementById("chartjs-dashboard-line"), {
+				type: "line",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "Sales ($)",
+						fill: true,
+						backgroundColor: gradient,
+						borderColor: window.theme.primary,
+						data: [
+							2115,
+							1562,
+							1584,
+							1892,
+							1587,
+							1923,
+							2566,
+							2448,
+							2805,
+							3438,
+							2917,
+							3327
+						]
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					tooltips: {
+						intersect: false
+					},
+					hover: {
+						intersect: true
+					},
+					plugins: {
+						filler: {
+							propagate: false
+						}
+					},
+					scales: {
+						xAxes: [{
+							reverse: true,
+							gridLines: {
+								color: "rgba(0,0,0,0.0)"
+							}
+						}],
+						yAxes: [{
+							ticks: {
+								stepSize: 1000
+							},
+							display: true,
+							borderDash: [3, 3],
+							gridLines: {
+								color: "rgba(0,0,0,0.0)"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Pie chart
+			new Chart(document.getElementById("chartjs-dashboard-pie"), {
+				type: "pie",
+				data: {
+					labels: ["Chrome", "Firefox", "IE"],
+					datasets: [{
+						data: [4306, 3801, 1689],
+						backgroundColor: [
+							window.theme.primary,
+							window.theme.warning,
+							window.theme.danger
+						],
+						borderWidth: 5
+					}]
+				},
+				options: {
+					responsive: !window.MSInputMethodContext,
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					cutoutPercentage: 75
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Bar chart
+			new Chart(document.getElementById("chartjs-dashboard-bar"), {
+				type: "bar",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "This year",
+						backgroundColor: window.theme.primary,
+						borderColor: window.theme.primary,
+						hoverBackgroundColor: window.theme.primary,
+						hoverBorderColor: window.theme.primary,
+						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+						barPercentage: .75,
+						categoryPercentage: .5
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					scales: {
+						yAxes: [{
+							gridLines: {
+								display: false
+							},
+							stacked: false,
+							ticks: {
+								stepSize: 20
+							}
+						}],
+						xAxes: [{
+							stacked: false,
+							gridLines: {
+								color: "transparent"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var markers = [{
+					coords: [31.230391, 121.473701],
+					name: "Shanghai"
+				},
+				{
+					coords: [28.704060, 77.102493],
+					name: "Delhi"
+				},
+				{
+					coords: [6.524379, 3.379206],
+					name: "Lagos"
+				},
+				{
+					coords: [35.689487, 139.691711],
+					name: "Tokyo"
+				},
+				{
+					coords: [23.129110, 113.264381],
+					name: "Guangzhou"
+				},
+				{
+					coords: [40.7127837, -74.0059413],
+					name: "New York"
+				},
+				{
+					coords: [34.052235, -118.243683],
+					name: "Los Angeles"
+				},
+				{
+					coords: [41.878113, -87.629799],
+					name: "Chicago"
+				},
+				{
+					coords: [51.507351, -0.127758],
+					name: "London"
+				},
+				{
+					coords: [40.416775, -3.703790],
+					name: "Madrid "
+				}
+			];
+			var map = new jsVectorMap({
+				map: "world",
+				selector: "#world_map",
+				zoomButtons: true,
+				markers: markers,
+				markerStyle: {
+					initial: {
+						r: 9,
+						strokeWidth: 7,
+						stokeOpacity: .4,
+						fill: window.theme.primary
+					},
+					hover: {
+						fill: window.theme.primary,
+						stroke: window.theme.primary
+					}
+				},
+				zoomOnScroll: false
+			});
+			window.addEventListener("resize", () => {
+				map.updateSize();
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
+			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
+			document.getElementById("datetimepicker-dashboard").flatpickr({
+				inline: true,
+				prevArrow: "<span title=\"Previous month\">&laquo;</span>",
+				nextArrow: "<span title=\"Next month\">&raquo;</span>",
+				defaultDate: defaultDate
+			});
+		});
+	</script>
+
+</body>
+
+</html>

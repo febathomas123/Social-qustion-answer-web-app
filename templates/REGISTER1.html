@@ -1,0 +1,258 @@
+{% load static %}
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'css/stylee.css'%}"/>
+<link href="{% static 'css/style.css'%}" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/sec2.css'%}"/>
+</head>
+<body>
+	<div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.596),rgba(0, 0, 0, 0.568)) ,url('{% static '/images/background.jpg'%}');">
+		<!-- <div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.596),rgba(0, 0, 0, 0.568)) ,url('{% static 'images/background.jpg'%}');"> -->
+<div class="navbar">
+<img src="{% static 'images/logo.jpg'%}" class="logo" width="800" height="50">
+
+</div>
+<script  lang="javascript">
+		function Validate() {
+         var fn = document.getElementById('fn').value;
+         if (!fn.match(/^[A-Za-z]+$/)) {
+          document.getElementById('nameeError').innerHTML="Only alphabets are allowed";
+          document.getElementById('fn').value = fn;
+          document.getElementById('fn').style.color = "red";
+          return false;
+          flag=1;
+         }
+         else if(fn.length<3||fn.length>30){
+          document.getElementById('nameeError').innerHTML="Between 3 to 10 characters";
+          document.getElementById('fn').value = val;
+          document.getElementById('fn').style.color = "red";
+          return false;
+         }
+         else{
+         document.getElementById('nameeError').innerHTML=" ";
+         document.getElementById('fn').style.color = "green";
+         return true;
+         }
+      }
+      function Validatename() {
+         var ln = document.getElementById('ln').value;
+         if (!ln.match(/^[A-Za-z]+$/)) {
+            document.getElementById('nameError').innerHTML="Only alphabets are allowed";
+            document.getElementById('ln').value = ln;
+            document.getElementById('ln').style.color = "red";
+            return false;
+            flag=1;
+         }
+         else if(ln.length<1||ln.length>30){
+            document.getElementById('nameError').innerHTML="Between 3 to 10 characters";
+            document.getElementById('ln').value = ln;
+            document.getElementById('ln').style.color = "red";
+            return false;
+         }
+         else{
+            document.getElementById('nameError').innerHTML=" ";
+            document.getElementById('ln').style.color = "green";
+            return true;
+         }
+      }
+
+      function ValidateEmail(){
+         var email=document.getElementById('email').value;
+         var mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+         if(email.length<8||email.length>40){
+             document.getElementById('emailError').innerHTML="Invalid Email";
+                 document.getElementById('email').value = email;
+                 document.getElementById('email').style.color = "red";
+                 return false;
+         }
+         if(!email.match(/^[\w\+\'\.-]+@[\w\'\.-]+\.[a-zA-Z]{2,}$/)){
+             document.getElementById('emailError').innerHTML="Please enter a valid email";
+             document.getElementById('email').value = email;
+             document.getElementById('email').style.color = "red";
+         return false;
+         }
+         else{
+         document.getElementById('emailError').innerHTML=" ";
+         document.getElementById('email').style.color = "green";
+         // return true;
+         }
+      }
+
+      function ValidatePhone() {
+         var phone=document.getElementById('mob').value;
+         if(!phone.match(/^[6789][0-9]{9}$/)){
+            document.getElementById('phoneError').innerHTML="Please enter a valid Number starting with 6,7,8 or 9";
+            return false;
+         }
+         else{
+            document.getElementById('phoneError').innerHTML=" ";
+            document.getElementById('phone').style.color = "green";
+            return true;
+         }
+      }
+      function Validatepassword() {
+         var pass=document.getElementById('password').value;
+         if(!pass.match(/[a-z]/g)){
+            document.getElementById('password').value = pass;
+            document.getElementById('passwordError').innerHTML="Enter a strong password eg:Aa#23gh56";
+            document.getElementById('password').style.color="red"
+            return false;
+         }
+         else if(!pass.match(/[A-Z]/g)){
+           document.getElementById('password').value = pass;
+           document.getElementById('passwordError').innerHTML="Include minimum one capital letter";
+           document.getElementById('password').style.color="red"
+           return false;
+         }
+         else if(!pass.match(/[0-9]/g)){
+            document.getElementById('password').value = pass;
+            document.getElementById('passwordError').innerHTML="Include 1 digit";
+            document.getElementById('password').style.color="red"
+            return false;
+         }
+         else if(!pass.match(/[^a-zA-Z\d]/g)){
+          document.getElementById('password').value = pass;
+          document.getElementById('passwordError').innerHTML="Include 1 special character";
+          document.getElementById('password').style.color="red"
+          return false;
+         }
+         else if(pass.length < 8){
+           document.getElementById('password').value = pass;
+           document.getElementById('passwordError').innerHTML="Minimum 8 characters";
+           document.getElementById('password').style.color="red"
+           return false;
+         }
+         else{
+            document.getElementById('passwordError').innerHTML=" ";
+            document.getElementById('password').style.color = "green";
+            return true;
+         }
+      }
+
+      function Val(){
+        if(Validate()==false || ValidatePhone()==false || Validatename()==false || ValidateEmail()==false ||  Validatepassword()==false) {
+           return false;
+        }
+      }
+   </script>
+
+    <!-- Body of Form starts -->
+  	<div class="container1" >
+		<div style="color:rgb(229, 255, 0)">{% for msg in messages %}{{msg}}{% endfor %} </div>
+      <form  method="POST" enctype="multipart/form-data"  onsubmit="return Val();">
+		   {% csrf_token %}
+        
+           <!--name-->
+    		<div class="box" >
+          <label class="fl fontLabel"> Name: </label>
+    			<div class="new iconBox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+    			<div class="fr">
+					<input type="text" name="f_name" id="fn" placeholder="Name"
+              class="textBox" autofocus="on" required onkeyup="return Validate();"/>
+    			</div>
+    			<div class="clr"><span id = "nameeError" style="color:rgb(229, 255, 0);"></span></div>
+    		</div>
+    		<!--name-->
+
+
+    		<!---Phone No.------>
+    		<div class="box">
+          <label  class="fl fontLabel"> Phone No.: </label>
+    			<div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="m_number" id="mob" maxlength="10" minlength="10" placeholder="Phone No." class="textBox" onkeyup="return ValidatePhone()">
+    			</div>
+    			<div class="clr"> <span id="phoneError" style="color:rgb(229, 255, 0);"></span></div>
+    		</div>
+    		<!---Phone No.---->
+							<!---category ID---->
+    		<div class="box">
+          <label  class="fl fontLabel"> Category : </label>
+    			<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+    			<div class="fr"><select name="category1"   style="width:190px;" required id="c" >
+					<option selected value="null"><small>select category</small></option>
+					{% for a in c_det %}
+					<option value='{{a.cat}}'><small><font color="black">{{a.cat}}</font> </small>
+
+					{% endfor %}
+<!--    					<input type="text" required name="category" id="c" placeholder="Category Id" class="textBox">-->
+    			</select></div>
+    			<div class="clr"></div>
+			</div>
+    		<!--category ID----->
+				<!--intrested area-->
+    		<div class="box">
+          <label  class="fl fontLabel"> Specialised area: </label>
+    			<div class="new iconBox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+    			<div class="fr">
+    					<input type="text" name="interest" id="ln" placeholder="intrested area"
+              class="textBox" autofocus="on" required onkeyup="return Validatename()"/>
+    			</div>
+    			<div class="clr"><span id = "nameError" style="color:rgb(229, 255, 0);"></span></div>
+    		</div>
+    		<!--intrested area-->
+				<!-- experience-->
+    		<!-- <div class="box">
+          <label for="experience" class="fl fontLabel"> experience: </label>
+    			<div class="new iconBox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+    			<div class="fr">
+    					<input type="text" name="experience"  id="e" placeholder="experience"
+              class="textBox" autofocus="on" required>
+    			</div>
+    			<div class="clr"></div>
+    		</div> -->
+    		<!--experience -->
+
+
+
+    		<!---E mail ID---->
+    		<div class="box">
+          <label for="email" class="fl fontLabel"> Email ID: </label>
+    			<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="email" required name="email" id="email" placeholder="Email Id" class="textBox" onkeyup="return ValidateEmail();">
+    			</div>
+    			<div class="clr"></div><span id="emailError" style="color:rgb(229, 255, 0);"></span>
+    		</div>
+    		<!--Email ID----->
+
+
+    		<!---Password------>
+    		<div class="box">
+          <label for="password" class="fl fontLabel"> Password </label>
+    			<div class="fl iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="Password" required name="password" id="password" placeholder="Password" class="textBox" onkeyup="return Validatepassword();">
+    			</div>
+    			<div class="clr"><span id="passwordError" style="color:rgb(229, 255, 0);"></span></div>
+    		</div>
+    		<!---Password----><br>
+		  <!-- File Uploader HTML-->
+ <font color="white"<label for="file" class="custom-uploader">Biodata</label> </font>
+  <input id="files" type="file" name="fileToUpload" id="j" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps">
+
+<br><br>
+
+<!-- File Uploader HTML-->
+ <font color="white"<label for="file" class="custom-uploader">Certificates</label> </font>
+  <input id="file" type="file" name="fileToUpload" id="h" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps">
+
+<!---Submit Button------>
+    		<div class="box" style="background: #2d3e3f">
+    				<input type="Submit" name="Submit" class="submit" value="SUBMIT">
+    		</div>
+    		<!---Submit Button----->
+      </form>
+   </div>
+  <!--Body of Form ends--->
+
+</div>
+
+</body>
+</html>

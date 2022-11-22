@@ -1,0 +1,122 @@
+<html>
+<head>
+<link rel="stylesheet" href="stylee.css">
+<link href="css/style.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="sec.css">
+</head>
+<body>
+<div class="banner">
+<div class="navbar">
+<img src="logo.jpg" class="logo" width="800" height="50">
+<ul>
+	<li><a href="LOGIN.html">LOGIN</a></li> 
+		<li><a href="REGISTER1.html">REGISTER FOR EXPERT</a></li> 
+		<li><a href="REGISTER2.html">REGISTER FOR PUBLIC</a></li>
+
+</ul>
+
+</div>
+ <body>
+    <!-- Body of Form starts -->
+  	<div class="container">
+      <form method="post" autocomplete="on">
+        <!--First name-->
+    		<div class="box">
+          <label for="firstName" class="fl fontLabel"> First Name: </label>
+    			<div class="new iconBox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+    			<div class="fr">
+    					<input type="text" name="firstName" placeholder="First Name"
+              class="textBox" autofocus="on" required>
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--First name-->
+
+
+        <!--Second name-->
+    		<div class="box">
+          <label for="secondName" class="fl fontLabel"> Seconed Name: </label>
+    			<div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="secondName"
+              placeholder="Last Name" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Second name-->
+
+
+    		<!---Phone No.------>
+    		<div class="box">
+          <label for="phone" class="fl fontLabel"> Phone No.: </label>
+    			<div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="phoneNo" maxlength="10" minlength="10" placeholder="Phone No." class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Phone No.---->
+
+
+    		<!---Email ID---->
+    		<div class="box">
+          <label for="email" class="fl fontLabel"> Email ID: </label>
+    			<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="email" required name="email" placeholder="Email Id" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Email ID----->
+
+
+    		<!---Password------>
+    		<div class="box">
+          <label for="password" class="fl fontLabel"> Password </label>
+    			<div class="fl iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="Password" required name="password" placeholder="Password" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Password----><br><br>
+<!-- File Uploader HTML-->
+<form action="fileupload.php" method="post" enctype="multipart/form-data"> 
+
+  <font color="white"<label for="file" class="custom-uploader">Qualification</label> </font>
+  <input id="file" type="file" name="fileToUpload" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"> 
+
+  <button type="submit" name="submit" class="btn btn-success"> 
+
+ Upload File 
+
+</button> 
+
+
+
+    		<!---Gender----->
+    		<div class="box radio">
+          <label for="gender" class="fl fontLabel"> Gender: </label>
+    				<input type="radio" name="Gender" value="Male" required> Male &nbsp; &nbsp; &nbsp; &nbsp;
+    				<input type="radio" name="Gender" value="Female" required> Female
+    		</div>
+    		<!---Gender---><br>
+
+
+
+
+    		<!---Submit Button------>
+    		<div class="box" style="background: #2d3e3f">
+    				<input type="Submit" name="Submit" class="submit" value="SUBMIT">
+    		</div>
+    		<!---Submit Button----->
+      </form>
+  </div>
+  <!--Body of Form ends--->
+  </body>
+</div>
+
+</body>
+</html>

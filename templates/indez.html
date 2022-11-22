@@ -1,0 +1,93 @@
+{% load static %}
+<html>
+<head>
+<link rel="stylesheet" href="{% static 'css/stylee.css'%}"/>
+</head>
+<body>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.596),rgba(0, 0, 0, 0.568)) ,url('{% static 'images/background.jpg'%}');">
+  <!--<div style="background-color:>-->
+<div class="navbar">
+<img src="{% static 'images/logo.jpg'%}" class="logo" width="800" height="50">
+<ul>  
+
+
+<style>
+#nav {
+list-style:none inside;
+margin:0;
+padding:0;
+text-align:center;
+}
+#nav li {
+display:block;
+position:relative;
+float:left;
+background: #24af15; /* menu background color */
+}
+#nav li a {
+display:block;
+
+padding:0;
+text-decoration:none;
+width:300px; /* this is the width of the menu items */
+line-height:45px; /* this is the hieght of the menu items */
+color:#ffffff; /* list item font color */
+}
+#nav li li a {font-size:80%;} /* smaller font size for sub menu items */
+#nav li:hover {background:#003f20;} /* highlights current hovered list item and the parent list items when hovering over sub menues */
+#nav ul {
+position:absolute;
+padding:0;
+left:0;
+
+display:none; /* hides sublists */
+}
+#nav li:hover ul ul {display:none;} /* hides sub-sublists */
+#nav li:hover ul {display:block;} /* shows sublist on hover */
+#nav li li:hover ul {
+display:block; /* shows sub-sublist on hover */
+margin-left:300px; /* this should be the same width as the parent list item */
+margin-top:-55px; /* aligns top of sub menu with top of list item */
+}
+</style>
+
+
+<ul id="nav">
+<li><a href="/login/">LOGIN</a></li>
+<li><a href="#">REGISTER</a>
+<ul>
+<li><a href="/reg1/">REGISTER FOR EXPERT</a></li>
+<li><a href="/reg2/">REGISTER FOR PUBLIC</a></li>
+</li>
+</ul>
+</li>
+</ul>
+
+		
+</ul>
+
+</div>
+
+<div class ="content">
+  <div style="color:red">
+  {% for msg in messages %}
+  {{msg}}
+  {% endfor %} </div>
+   <h1 style="color:white;font-size:50px;">QA world</h1> <br>
+ <br>
+ <p style="color:white;font-size:30px;">A  place to share knowledge and better understand the world</p>
+
+
+</div>
+</div>
+<div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.596),rgba(0, 0, 0, 0.568)) ,url('{% static 'images/backg.jpg'%}');">
+<h5>FOR EXPERT</h5>
+
+
+
+
+
+</div>
+</body>
+</html>
