@@ -1,0 +1,490 @@
+
+
+
+
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="{% static 'css/stylee.css'%}"/>
+    <link href="{% static 'css/style.css'%}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/sec.css'%}"/>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="{% static 'assets/img/icons/icon-48x48.png'%}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+	<title>QAworld</title>
+
+	<link href="{% static 'assets/css/app.css'%}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="index.html">
+          <span class="align-middle">QAworld</span>
+        </a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						Pages
+					</li>
+
+					<li class="sidebar-item ">
+						<a class="sidebar-link" href="/expert/">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="/expert_profile/">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item ">
+			<a class="sidebar-link" href="/question_list/">
+  <i class="align-middle" data-feather="check-square"></i> <span class="align-middle"> question list</span>
+</a>
+		</li>
+		<li class="sidebar-item ">
+			<a class="sidebar-link" href="/pending_question/">
+  <i class="align-middle" data-feather="check-square"></i> <span class="align-middle"> Pending Question</span>
+</a>
+		</li>
+		<li class="sidebar-item ">
+			<a class="sidebar-link" href="#">
+  <i class="align-middle" data-feather="check-square"></i> <span class="align-middle"> Approved Question</span>
+</a>
+		</li>
+ 
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/logout/">
+			  <i class="align-middle" data-feather="square"></i> <span class="align-middle">logOut</span>
+			</a>
+					</li>
+			</div>
+		</nav>
+
+		<div class="main" style="align:right ;">
+			<nav class="navbar navbar-expand navbar-light navbar-bg" >
+				<a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+
+
+		<li class="sidebar-item">
+			<a  href="/expert_profile/">
+  <i class="align-middle" data-feather="square"></i> <span class="align-middle">{{r_det.f_name}}</span>
+</a>
+		</li>
+			</nav>
+
+			<div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.596),rgba(0, 0, 0, 0.568)) ,url('{% static 'images/background.jpg'%}');">
+				<div class="navbar">
+				<img src="{% static 'images/logo.jpg'%}" class="logo" width="800" height="50">
+				</div>
+				
+				
+				<script  lang="javascript">
+				function vForm(){
+					var fn = document.getElementById("a").value ;
+					var ln = document.getElementById("b").value ;
+				   var num = document.getElementById("c").value ;
+				   var pass = document.getElementById("e").value ;
+				   var mail = document.getElementById("d").value ;
+					var gender = document.getElementById("f").value ;
+					 var str=/[a-zA-Z]/;
+					 if( fn == " " )
+					  {
+						alert(" Name must be fill ");
+						return false;
+					   }
+					  if ( str.test(fn)==false || str.test(ln)==false)
+					 {
+						alert("Name must be alphabets");
+						return false;
+					   }
+				
+					 if ( isNaN(num)){
+							alert("mobile number must be a number");
+							return false;
+						}
+				
+					 return true;
+				   }
+				</script>
+				
+				
+					<!-- Body of Form starts -->
+					  <div class="container1" style="margin-left:20px;">
+					  <form action="/public_eprofile/" autocomplete="on" onsubmit="return vForm();">
+						  {% csrf_token %}
+						<!--First name--><br>
+							<div class="box">
+								<label for="Name" class="fl fontLabel"> Name: </label>
+								<div class="new iconBox">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						  </div>
+								<div class="fr">
+										<input type="text" name="f_name" id="a" placeholder="Name" 
+							  class="textBox" autofocus="on" required  value="{{r_det.f_name}}"  readonly>
+								</div>
+								<div class="clr"></div>
+							</div>
+							<!--name-->
+				
+				
+							<!---Phone No.------>
+							<div class="box">
+						  <label for="phone" class="fl fontLabel"> Phone No.: </label>
+								<div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+								<div class="fr">
+										<input type="text" required name="m_number" id="b" maxlength="10" minlength="10" placeholder="Phone No." class="textBox"  value="{{r_det.mobile}}"  readonly>
+								</div>
+								<div class="clr"></div>
+							</div>
+							<!---Phone No.---->
+											<!---category ID---->
+							<div class="box">
+						  <label for="category" class="fl fontLabel"> Category : </label>
+								<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+								<div class="fr">
+									<input type="text" required name="category" id="b"  placeholder="category" class="textBox"  value="{{r_det.cat}}"  readonly>
+								 
+
+								</div>
+								<div class="clr"></div>
+							</div>
+							<!--category ID----->
+								<!--intrested area-->
+							<div class="box">
+						  <label for="intrested area" class="fl fontLabel"> intrested area: </label>
+								<div class="new iconBox">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						  </div>
+								<div class="fr">
+										<input type="text" name="interest" id="d" placeholder="intrested area"
+							  class="textBox" autofocus="on" required  value="{{r_det.interest}}"  readonly>
+								</div>
+								<div class="clr"></div>
+							</div>
+							<!--intrested area-->
+								<!--experience-->
+							<!-- <div class="box">
+						  <label for="experience" class="fl fontLabel"> experience: </label>
+								<div class="new iconBox">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						  </div>
+								<div class="fr">
+										<input type="text" name="experience"  id="e" placeholder="experience"
+							  class="textBox" autofocus="on" required  value="{{r_det.ex}}"  readonly>
+								</div>
+								<div class="clr"></div>
+							</div> -->
+							<!--experience-->
+				
+				
+				
+							<!---E mail ID---->
+							<div class="box">
+						  <label for="email" class="fl fontLabel"> Email ID: </label>
+								<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+								<div class="fr">
+										<input type="email" required name="email" id="f" placeholder="Email Id" class="textBox"  value="{{r_det.email}} " readonly>
+								</div>
+								<div class="clr"></div>
+							</div>
+							<!--Email ID----->
+				
+				<br><br>
+				
+				
+				
+<!-- 				
+							-Submit Button------>
+						  <!-- <br><br>
+							<div class="box" style="background: #2d3e3f">
+									<input type="Submit" name="Submit" class="submit" value="EDIT">
+							</div> --> -->
+							<!---Submit Button----->
+					  </form>
+				  </div>
+				  <!--Body of Form ends--->
+				</div>
+
+			
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+	<script src="{% static 'assets/js/app.js'%}"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+			// Line chart
+			new Chart(document.getElementById("chartjs-dashboard-line"), {
+				type: "line",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "Sales ($)",
+						fill: true,
+						backgroundColor: gradient,
+						borderColor: window.theme.primary,
+						data: [
+							2115,
+							1562,
+							1584,
+							1892,
+							1587,
+							1923,
+							2566,
+							2448,
+							2805,
+							3438,
+							2917,
+							3327
+						]
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					tooltips: {
+						intersect: false
+					},
+					hover: {
+						intersect: true
+					},
+					plugins: {
+						filler: {
+							propagate: false
+						}
+					},
+					scales: {
+						xAxes: [{
+							reverse: true,
+							gridLines: {
+								color: "rgba(0,0,0,0.0)"
+							}
+						}],
+						yAxes: [{
+							ticks: {
+								stepSize: 1000
+							},
+							display: true,
+							borderDash: [3, 3],
+							gridLines: {
+								color: "rgba(0,0,0,0.0)"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Pie chart
+			new Chart(document.getElementById("chartjs-dashboard-pie"), {
+				type: "pie",
+				data: {
+					labels: ["Chrome", "Firefox", "IE"],
+					datasets: [{
+						data: [4306, 3801, 1689],
+						backgroundColor: [
+							window.theme.primary,
+							window.theme.warning,
+							window.theme.danger
+						],
+						borderWidth: 5
+					}]
+				},
+				options: {
+					responsive: !window.MSInputMethodContext,
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					cutoutPercentage: 75
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Bar chart
+			new Chart(document.getElementById("chartjs-dashboard-bar"), {
+				type: "bar",
+				data: {
+					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					datasets: [{
+						label: "This year",
+						backgroundColor: window.theme.primary,
+						borderColor: window.theme.primary,
+						hoverBackgroundColor: window.theme.primary,
+						hoverBorderColor: window.theme.primary,
+						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+						barPercentage: .75,
+						categoryPercentage: .5
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					scales: {
+						yAxes: [{
+							gridLines: {
+								display: false
+							},
+							stacked: false,
+							ticks: {
+								stepSize: 20
+							}
+						}],
+						xAxes: [{
+							stacked: false,
+							gridLines: {
+								color: "transparent"
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var markers = [{
+					coords: [31.230391, 121.473701],
+					name: "Shanghai"
+				},
+				{
+					coords: [28.704060, 77.102493],
+					name: "Delhi"
+				},
+				{
+					coords: [6.524379, 3.379206],
+					name: "Lagos"
+				},
+				{
+					coords: [35.689487, 139.691711],
+					name: "Tokyo"
+				},
+				{
+					coords: [23.129110, 113.264381],
+					name: "Guangzhou"
+				},
+				{
+					coords: [40.7127837, -74.0059413],
+					name: "New York"
+				},
+				{
+					coords: [34.052235, -118.243683],
+					name: "Los Angeles"
+				},
+				{
+					coords: [41.878113, -87.629799],
+					name: "Chicago"
+				},
+				{
+					coords: [51.507351, -0.127758],
+					name: "London"
+				},
+				{
+					coords: [40.416775, -3.703790],
+					name: "Madrid "
+				}
+			];
+			var map = new jsVectorMap({
+				map: "world",
+				selector: "#world_map",
+				zoomButtons: true,
+				markers: markers,
+				markerStyle: {
+					initial: {
+						r: 9,
+						strokeWidth: 7,
+						stokeOpacity: .4,
+						fill: window.theme.primary
+					},
+					hover: {
+						fill: window.theme.primary,
+						stroke: window.theme.primary
+					}
+				},
+				zoomOnScroll: false
+			});
+			window.addEventListener("resize", () => {
+				map.updateSize();
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
+			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
+			document.getElementById("datetimepicker-dashboard").flatpickr({
+				inline: true,
+				prevArrow: "<span title=\"Previous month\">&laquo;</span>",
+				nextArrow: "<span title=\"Next month\">&raquo;</span>",
+				defaultDate: defaultDate
+			});
+		});
+	</script>
+
+</body>
+
+</html>
