@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import user,categry,subcategory,expert_tbl,question,Pending,tbl_answer
+from .models import user,categry,subcategory,expert_tbl,question,Pending,tbl_answer,tbl_chat
 
 from django.contrib import messages
 # Create your views here.
@@ -351,10 +351,31 @@ def public_eprofile(request):
 
     return render (request,"public_eprofile.html",content)
 
+def user_chat(request,id):
+        if request.session['email'] == 'null':
+            return redirect('/login/')
+        else:
+            email = request.session['email']
 
+            ans=tbl_answer.objects.get(id=id)
+            print(ans)
+            pend=ans.pending
+            expert=pend.expert
+            public=pend.question.person
+            ques=pend.question
+            chat= tbl_chat.objects.all()
+            if request.method == "POST":
+                msg = request.POST.get("msg")
+                if msg=="0000":
+                   new=tbl_chat(public=public,expert=expert,question=pend,msg=msg,person="any")
+                   new.save()
+                   msg="0000"
+            content = {
+                # 'chat':tbl_chat.objects.get(expert=expert,public=public,question=pend)
+                'chat':chat
+            }
 
-
-
+            return render(request, "chat.html",content)
 
 
 

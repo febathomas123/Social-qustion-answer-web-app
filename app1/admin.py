@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 
-from .models import user,categry,subcategory,expert_tbl,question,Pending,tbl_answer
+from .models import user,categry,subcategory,expert_tbl,question,Pending,tbl_answer,tbl_chat
 
 
 
@@ -29,7 +29,7 @@ admin.site.register(tbl_answer)
 admin.site.register(Pending)
 admin.site.register(subcategory)
 admin.site.register(question)
-
+admin.site.register(tbl_chat)
 
 admin.site.unregister(Group)
 

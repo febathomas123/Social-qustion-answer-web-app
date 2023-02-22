@@ -77,7 +77,13 @@ class tbl_answer(models.Model):
     review = models.CharField(max_length=100, null=True)
     status=models.IntegerField(default=0)
 
-
+class tbl_chat(models.Model):
+    public=models.ForeignKey("user",on_delete=models.CASCADE)
+    expert=models.ForeignKey("expert_tbl",on_delete=models.CASCADE)
+    question=models.ForeignKey("Pending",on_delete=models.CASCADE)
+    msg=models.CharField(max_length=1500, null=True)
+    person=models.CharField(max_length=10, null=False)
+    status=models.IntegerField(default=1)
 
 
 

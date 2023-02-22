@@ -25,7 +25,7 @@ urlpatterns = [
     path('reg1/', include('app1.urls')),
     path('reg2/', include('app1.urls')),
 
-
+    path('abc/', include('app1.urls')),
     path('expert/', include('app1.urls')),
     path('passwrd/', include('app1.urls')),
     path('answer/', include('app1.urls')),
@@ -42,6 +42,7 @@ urlpatterns = [
     path('de_user_ques/<int:id>/', include('app1.urls')),
     path('user_ans_ques/', include('app1.urls')),
     path('answering/<int:id>/', include('app1.urls')),
+    path('chat/<int:id>/', include('app1.urls')),
     path('user_req_ques/', include('app1.urls')),
 
     path('user/', include('app1.urls')),

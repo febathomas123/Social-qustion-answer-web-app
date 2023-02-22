@@ -269,6 +269,13 @@
                                     <input type="text" class="form-control" placeholder="Input" readonly value="Expert Name : {{q.pending.expert.f_name}}">
 									<textarea class="form-control" rows="2" placeholder="Textarea" readonly value="">Answer: {{q.answer}}</textarea>
                                     <br>
+									
+										<div class="mb-3">
+											<div class="mb-3">
+												<button class="btn btn-info" onclick='window.location.href="{% url "chat" q.id %}";' >chat</button></a>
+										
+										</div>
+									</div>
 									 <!-- <div class="mb-3">
 										<button class="btn btn-success" onclick="window.location.href='#';" >Approve</button></a>
 										

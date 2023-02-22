@@ -36,6 +36,7 @@ urlpatterns = [
 
     path('pending_question/', views.pending_question),
     path('pending/<int:id>', views.pending),
+    path('chat/<int:id>', views.user_chat,name="chat"),
     path('qs_approve/<int:id>', views.qs_approve),
     path('approved_qs/', views.approved_qs),
     path('user_ans_ques/', views.user_ans_ques),
